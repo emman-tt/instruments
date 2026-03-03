@@ -1,0 +1,26 @@
+/* Import all your Google Fonts at the top */
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Cookie&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Nosifer&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --font-tools: "NOsifer", " system-ui", "sans-serif";
+  --font-tools:
+    "Bodoni Moda", "Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-music: "Cookie", "Brush Script MT", cursive, fantasy;
+  --font-my-font: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-brand: "Oswald", "Impact", sans-serif;
+  --font-elegant: "Playfair Display", "Georgia", serif;
+  --font-heading-custom: "Poppins", sans-serif;
+  --font-body-text: "Roboto", "Helvetica", sans-serif;
+}

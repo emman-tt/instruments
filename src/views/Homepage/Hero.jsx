@@ -1,0 +1,112 @@
+import { Play } from 'lucide-react'
+import { gsap } from '../../utils/gsap'
+import { useEffect, useRef } from 'react'
+
+export default function Hero () {
+  const middleCord = useRef(null)
+
+  useEffect(() => {
+    const lineArray = gsap.utils.toArray('.lines')
+    const infoArray = gsap.utils.toArray('.info')
+    const cordArray = gsap.utils.toArray('.cords')
+
+    const windowSize = window.innerWidth
+
+    const tl = gsap.timeline()
+    lineArray.forEach((item, index) => {
+      tl.to(
+        item,
+        {
+          width: windowSize <= 500 ? 270 : windowSize <= 1100 ? 450 : 500,
+          ease: 'none',
+          delay: index === 0 ? 0.5 : 0.2,
+          duration: 0.7
+        },
+        index === 0 ? '+=0' : '-=0.7'
+      )
+    })
+    tl.to(middleCord.current, {
+      height: 40,
+      ease: 'none',
+      duration: 2,
+      opacity: 1
+    })
+
+    cordArray.forEach((item, index) => {
+      gsap.to(item, {
+        left: 3 + index * 10,
+        ease: 'none',
+        opacity: 1,
+        duration: 3 + index,
+        delay: 1.5,
+        repeat: -1,
+        yoyo: true,
+        repeatDelay: 0.2
+      })
+    })
+
+    infoArray.forEach(item => {
+      gsap.to(item, {
+        y: -60,
+        delay: 0.8
+      })
+    })
+  }, [])
+  return (
+    <section className='h-110 bg-none   flex text-white relative overflow-x-hidden items-center flex-col'>
+      <section className='h-full w-full max-sm:pr-5  md:w-130 xl:w-150 '>
+        <h2 className='text-lg pl-10 md:text-xl xl:text-3xl md:pl-20 xl:p-0 text-[#b09958]'>
+          The
+        </h2>
+
+        <h3 className='font-elegant text-[5em] md:text-[7em] pl-8  md:pl-20 xl:p-0 xl:text-[11em] font-medium   leading-40'>
+          Tools
+        </h3>
+
+        <div className='flex w-full relative mt-5  justify-between'>
+          <div className='flex items-center gap-2 sm:gap-7'>
+            <div className='p-5 md:p-3 xl:p-5 rounded-full justify-center items-center flex border-[#b09958] border px-7'>
+              <Play color='#b09958' />
+            </div>
+            <div className='relative h-max'>
+              <div
+                ref={middleCord}
+                className='h-0 w-0.75 opacity-0  bg-[#b09958] z-1 font-bold absolute left-30 sm:left-60 inline-block top-0'
+              ></div>
+              <ul className='flex flex-col gap-4 md:gap-3 xl:gap-4 '>
+                <li className='md:w-30 xl:w-40 lines h-0.5 relative bg-[#b09958]'></li>
+                <li className='xl:w-40 relative lines h-0.5 bg-[#b09958]'>
+                  <span className='absolute cords opacity-0 w-1.5 h-1.5 md:w-2 xl:w-3 md:h-2 xl:h-3 rounded-full bg-[#b09958] -top-6 -right-3'></span>
+                  <span className='absolute md:w-2 xl:w-3 w-1.5 h-1.5 cords opacity-0 md:h-2 xl:h-3 rounded-full bg-[#b09958] -top-6 -right-25'></span>
+                </li>
+                <li className='md:w-30 xl:w-40 lines relative h-0.5 bg-[#b09958]'>
+                  <span className='absolute md:w-2 xl:w-3 w-1.5 h-1.5 cords opacity-0 md:h-2 xl:h-3 rounded-full bg-[#b09958] -top-6 -right-1'></span>
+                  <span className='absolute cords opacity-0 w-1.5 h-1.5 md:w-2 xl:w-3 md:h-2 xl:h-3 rounded-full bg-[#b09958] -top-6 -right-30'></span>
+                  <span className='absolute md:w-2 xl:w-3 cords w-1.5 h-1.5 opacity-0 md:h-2 xl:h-3 rounded-full bg-[#b09958] -top-6 -right-9'></span>
+                </li>
+                <li className='md:w-30 xl:w-40 lines relative h-0.5 bg-[#b09958]'>
+                  <span className='absolute md:w-2 xl:w-3 cords w-1.5 h-1.5 opacity-0 md:h-2 xl:h-3 rounded-full bg-[#b09958] -top-6 -right-10'></span>
+                  <span className='absolute md:w-2 xl:w-3 cords w-1.5 h-1.5 opacity-0 md:h-2 xl:h-3 rounded-full bg-[#b09958] -top-6 -right-30'></span>
+                  <span className='absolute cords opacity-0 md:w-2 w-1.5 h-1.5 xl:w-3 md:h-2 xl:h-3 rounded-full bg-[#b09958] -bottom-1 -right-1'></span>
+                  <span className='absolute md:w-2 xl:w-3 cords w-1.5 h-1.5 opacity-0 md:h-2 xl:h-3 rounded-full bg-[#b09958] -bottom-1 -right-45'></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <ul className='flex text-xs xl:text-sm self-center absolute right-0 top-0 items-end  font-semibold h-full  flex-col'>
+            <li className='info '>Learn</li>
+            <li className='info'>Play</li>
+            <li className='info'>Discover</li>
+          </ul>
+        </div>
+
+        <div className='flex w-full gap-5 justify-end mt-0 items-center '>
+          <p className='text-[#b09958] text-xl font-light'>of</p>
+          <h3 className='font-elegant font-light max-sm:pr-10 text-[4em] md:text-[5em] xl:text-[8em] leading-30'>
+            Jazz
+          </h3>
+        </div>
+      </section>
+    </section>
+  )
+}
