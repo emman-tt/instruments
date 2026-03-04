@@ -13,7 +13,7 @@ export default function LenisProvider ({ children }) {
       // Mobile vs Desktop settings
       ...(isMobile ? {
         // MOBILE: Keep it natural, just slightly enhanced
-        duration: 1.2,           // Normal scroll duration
+        duration: 10.2,           // Normal scroll duration
         lerp: 0.05,               // Responsive feel
         smoothTouch: false,       // 👈 CRITICAL - use native touch
         touchMultiplier: 0.1,       // Normal touch speed
