@@ -14,8 +14,8 @@ export default function LenisProvider ({ children }) {
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      smoothTouch: false,
-      touchMultiplier: 2,
+      smoothTouch: true,
+      touchMultiplier: 1,
       wheelMultiplier: 1
     })
 

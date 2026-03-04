@@ -108,8 +108,8 @@ export default function Tools ({ headerRef, trumpet }) {
         scrollTrigger: {
           trigger: container.current,
           start: 'top top',
-          end: windowSize <= 500 ? '+=160%' : '+=250%',
-          markers: true,
+          end: windowSize <= 500 ? '+=190%' : '+=250%',
+          // markers: true,
           pin: true,
           scrub: 0,
           pinSpacing: true,
@@ -136,10 +136,10 @@ export default function Tools ({ headerRef, trumpet }) {
       gsap.from(toolsBox.current, {
         scrollTrigger: {
           trigger: first.current,
-          start: 'top+=30% top',
+          start: windowSize <= 500 ? 'top+=10%' : 'top+=30% top',
           end: '+=30%',
-          toggleActions: 'play none play reverse'
-          // markers: true
+          toggleActions: 'play none play reverse',
+          markers: true
         },
         x: -1000,
         duration: 0.6,
@@ -190,7 +190,7 @@ export default function Tools ({ headerRef, trumpet }) {
         const spacing = 0.5
         const startAt =
           i * portion +
-          (windowSize <= 500 ? 0.8 : windowSize <= 1100 ? 0.4 : 0.5) * spacing
+          (windowSize <= 500 ? 0.5 : windowSize <= 1100 ? 0.4 : 0.5) * spacing
 
         const tl = gsap.timeline({
           scrollTrigger: {
