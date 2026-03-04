@@ -14,9 +14,9 @@ export default function LenisProvider ({ children }) {
       ...(isMobile ? {
         // MOBILE: Keep it natural, just slightly enhanced
         duration: 1.2,           // Normal scroll duration
-        lerp: 0.15,               // Responsive feel
+        lerp: 0.05,               // Responsive feel
         smoothTouch: false,       // 👈 CRITICAL - use native touch
-        touchMultiplier: 1,       // Normal touch speed
+        touchMultiplier: 0.1,       // Normal touch speed
         wheelMultiplier: 0.8,     // Slightly slower if wheel attached
       } : {
         // DESKTOP: Full smooth experience
