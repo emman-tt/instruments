@@ -190,7 +190,7 @@ export default function Tools ({ headerRef, trumpet }) {
         const spacing = 0.5
         const startAt =
           i * portion +
-          (windowSize <= 500 ? 0.55 : windowSize <= 1100 ? 0.4 : 0.5) * spacing
+          (windowSize <= 500 ? 0.69 : windowSize <= 1100 ? 0.4 : 0.5) * spacing
 
         const tl = gsap.timeline({
           scrollTrigger: {
