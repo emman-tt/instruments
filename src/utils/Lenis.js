@@ -4,11 +4,12 @@ import Lenis from '@studio-freight/lenis'
 
 export default function LenisProvider ({ children }) {
   const lenisRef = useRef(null)
+  const windowSize = window.innerWidth
 
   useEffect(() => {
     // Initialize Lenis
     const lenis = new Lenis({
-      duration: 2,
+      duration: windowSize <= 500 ? 5 : 2,
       lerp: 0.05,
       easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
