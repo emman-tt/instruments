@@ -1,9 +1,72 @@
-import { Play } from 'lucide-react'
+import { ChevronRight, Pause, Play } from 'lucide-react'
 import { gsap } from '../../utils/gsap'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import preacher from '../../assets/songs/preacher-man.mp3'
+import america from '../../assets/songs/america.mp3'
+import homecoming from '../../assets/songs/homecoming.mp3'
+import clouded from '../../assets/songs/clouded.mp3'
+import gimme from '../../assets/songs/gimme.mp3'
+import jackie from '../../assets/songs/jackie.mp3'
+import ghost from '../../assets/songs/ghost.mp3'
+import marvins from '../../assets/songs/marvins.mp3'
+import tooDeep from '../../assets/songs/too-deep.mp3'
+import virginia from '../../assets/songs/virginia.mp3'
+import slimeOut from '../../assets/songs/slime-out.mp3'
 
 export default function Hero () {
   const middleCord = useRef(null)
+  const [play, setPlay] = useState(false)
+  const [current, setCurrent] = useState(0)
+  const audioRef = useRef(null)
+  const musicArray = [
+    marvins,
+    tooDeep,
+    virginia,
+    ghost,
+    slimeOut,
+    gimme,
+    clouded,
+    homecoming,
+    jackie
+  ]
+
+  useEffect(() => {
+    if (current >= musicArray.length) {
+      audioRef.current = new Audio(musicArray[0])
+      console.log('reached')
+      return setCurrent(0)
+    }
+    // Create audio once and store in ref
+    audioRef.current = new Audio(musicArray[current])
+    audioRef.current.loop = true // Set if you want looping
+
+    // Cleanup on unmount
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause()
+        audioRef.current = null
+      }
+    }
+  }, [current]) // Empty deps = runs once
+
+  useEffect(() => {
+    // Check if audio exists
+    if (!audioRef.current) return
+
+    if (play) {
+      // Play audio (with browser autoplay handling)
+      const playPromise = audioRef.current.play()
+
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.log('Autoplay prevented:', error)
+        })
+      }
+    } else {
+      // Pause audio
+      audioRef.current.pause()
+    }
+  }, [play, current])
 
   useEffect(() => {
     const lineArray = gsap.utils.toArray('.lines')
@@ -65,9 +128,25 @@ export default function Hero () {
 
         <div className='flex w-full relative mt-5  justify-between'>
           <div className='flex items-center gap-2 sm:gap-7'>
-            <div className='p-5 md:p-3 xl:p-5 rounded-full justify-center items-center flex border-[#b09958] border px-7'>
-              <Play color='#b09958' />
+            <div className='flex'>
+              <div
+                onClick={() => {
+                  setPlay(e => !e)
+                }}
+                className='p-5 cursor-pointer md:p-3 xl:p-5 rounded-full justify-center items-center flex border-[#b09958] border px-7'
+              >
+                {play ? <Pause color='#b09958' /> : <Play color='#b09958' />}
+              </div>
+              <div
+                onClick={() => {
+                  setCurrent(e => e + 1)
+                }}
+                className='p-5 cursor-pointer md:p-3 xl:p-5 rounded-full justify-center items-center flex border-[#b09958] border px-7'
+              >
+                <ChevronRight color='#b09958' />
+              </div>
             </div>
+
             <div className='relative h-max'>
               <div
                 ref={middleCord}

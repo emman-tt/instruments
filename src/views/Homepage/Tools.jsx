@@ -138,8 +138,8 @@ export default function Tools ({ headerRef, trumpet }) {
           trigger: first.current,
           start: windowSize <= 500 ? 'top+=10%' : 'top+=30% top',
           end: '+=30%',
-          toggleActions: 'play none play reverse',
-          markers: true
+          toggleActions: 'play none play reverse'
+          // markers: true
         },
         x: -1000,
         duration: 0.6,
