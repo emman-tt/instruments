@@ -1,17 +1,14 @@
 import { ChevronRight, Pause, Play } from 'lucide-react'
 import { gsap } from '../../utils/gsap'
 import { useEffect, useRef, useState } from 'react'
-import preacher from '../../assets/songs/preacher-man.mp3'
-import america from '../../assets/songs/america.mp3'
+
 import homecoming from '../../assets/songs/homecoming.mp3'
 import clouded from '../../assets/songs/clouded.mp3'
 import gimme from '../../assets/songs/gimme.mp3'
-import jackie from '../../assets/songs/jackie.mp3'
 import ghost from '../../assets/songs/ghost.mp3'
 import marvins from '../../assets/songs/marvins.mp3'
 import tooDeep from '../../assets/songs/too-deep.mp3'
 import virginia from '../../assets/songs/virginia.mp3'
-import slimeOut from '../../assets/songs/slime-out.mp3'
 
 export default function Hero () {
   const middleCord = useRef(null)
@@ -19,15 +16,13 @@ export default function Hero () {
   const [current, setCurrent] = useState(0)
   const audioRef = useRef(null)
   const musicArray = [
-    marvins,
     tooDeep,
-    virginia,
     ghost,
-    slimeOut,
+    marvins,
+    virginia,
     gimme,
     clouded,
-    homecoming,
-    jackie
+    homecoming
   ]
 
   useEffect(() => {
