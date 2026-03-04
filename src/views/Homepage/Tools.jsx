@@ -108,7 +108,7 @@ export default function Tools ({ headerRef, trumpet }) {
         scrollTrigger: {
           trigger: container.current,
           start: 'top top',
-          end: windowSize <= 500 ? '+=120%' : '+=250%',
+          end: windowSize <= 500 ? '+=160%' : '+=250%',
           markers: true,
           pin: true,
           scrub: 0,
@@ -121,7 +121,7 @@ export default function Tools ({ headerRef, trumpet }) {
         scrollTrigger: {
           trigger: first.current,
           start: windowSize <= 500 ? 'top+=-10% top' : 'top+=10% top',
-          end:"+=50%",
+          end: '+=50%',
           // markers: true,
           toggleActions: 'play none play reverse'
         },
