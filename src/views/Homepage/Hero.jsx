@@ -54,7 +54,7 @@ export default function Hero () {
   ]
 
   useEffect(() => {
-    if (current >= musicArray.length ) {
+    if (current >= musicArray.length) {
       // audioRef.current = new Audio(musicArray[0].file)
       // console.log('reached')
       return setCurrent(0)

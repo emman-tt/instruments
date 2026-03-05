@@ -4,7 +4,7 @@ import { useRef } from 'react'
 
 
 
-export default function Footer({ trumpet }) {
+export default function Footer() {
   const container = useRef(null)
   const instrumento = useRef(null)
   const windowSize = window.innerWidth

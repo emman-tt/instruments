@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect,  useMemo,  useRef, useState } from 'react'
 import { SplitText, gsap } from '../../utils/gsap'
 import { useGSAP } from '@gsap/react'
 
@@ -35,8 +35,7 @@ const deviceArray = [
 
 export default function Tools ({ headerRef, trumpet }) {
   const container = useRef(null)
-  const leftSide = useRef(null)
-  const rightSide = useRef(null)
+
   const box = useRef(null)
   const first = useRef(null)
   const toolsBox = useRef(null)
@@ -48,10 +47,10 @@ export default function Tools ({ headerRef, trumpet }) {
   const trumpetRef = useRef(null)
 
   const [active, setActive] = useState(0)
-  const itemsRef = useRef([])
+
   const windowSize = window.innerWidth
 
-  const boxes = [
+  const boxes = useMemo(() =>[
     { id: 1, name: 'trumpet', ref: trumpetRef },
     {
       id: 2,
@@ -74,9 +73,9 @@ export default function Tools ({ headerRef, trumpet }) {
         'https://res.cloudinary.com/drpnhajh9/image/upload/v1772670293/saxophone_cx0ovl.png',
       ref: saxoPhoneRef
     }
-  ]
+  ], [])
 
-  useEffect(() => {
+  useGSAP(() => {
     gsap.set(trumpet.current, { y: '-20em' })
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -109,11 +108,13 @@ export default function Tools ({ headerRef, trumpet }) {
       tl.scrollTrigger?.kill()
       tl.kill()
     }
-  }, [])
+  }, {
+    scope:container
+  })
 
   useGSAP(
     () => {
-      const tl = gsap.timeline({
+       gsap.timeline({
         scrollTrigger: {
           trigger: container.current,
           start: 'top top',
@@ -273,7 +274,7 @@ export default function Tools ({ headerRef, trumpet }) {
   )
 
   useEffect(() => {
-    boxes.map((item, i) => {
+    boxes.map((item) => {
       item.id === active
         ? gsap.to(item.ref.current, {
             zIndex: 40,
@@ -288,7 +289,7 @@ export default function Tools ({ headerRef, trumpet }) {
             overwrite: 'auto'
           })
     })
-  }, [active])
+  }, [active, windowSize,boxes])
 
   useEffect(() => {
     const item = document.querySelector('.number')
