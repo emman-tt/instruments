@@ -2,7 +2,6 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { SplitText, gsap } from '../../utils/gsap'
 import { useGSAP } from '@gsap/react'
 
-
 const deviceArray = [
   {
     id: 3,
@@ -34,7 +33,7 @@ const deviceArray = [
   }
 ]
 
-export default function Tools({ headerRef, trumpet }) {
+export default function Tools ({ headerRef, trumpet }) {
   const container = useRef(null)
   const leftSide = useRef(null)
   const rightSide = useRef(null)
@@ -54,9 +53,27 @@ export default function Tools({ headerRef, trumpet }) {
 
   const boxes = [
     { id: 1, name: 'trumpet', ref: trumpetRef },
-    { id: 2, name: 'piano', image: 'https://res.cloudinary.com/drpnhajh9/image/upload/v1772670290/piano_h3wp8x.png', ref: pianoRef },
-    { id: 3, name: 'drum', image: 'https://res.cloudinary.com/drpnhajh9/image/upload/v1772670293/drum_lwhzrh.png', ref: drumRef },
-    { id: 4, name: 'saxophone', image: 'https://res.cloudinary.com/drpnhajh9/image/upload/v1772670293/saxophone_cx0ovl.png', ref: saxoPhoneRef }
+    {
+      id: 2,
+      name: 'piano',
+      image:
+        'https://res.cloudinary.com/drpnhajh9/image/upload/v1772670290/piano_h3wp8x.png',
+      ref: pianoRef
+    },
+    {
+      id: 3,
+      name: 'drum',
+      image:
+        'https://res.cloudinary.com/drpnhajh9/image/upload/v1772670293/drum_lwhzrh.png',
+      ref: drumRef
+    },
+    {
+      id: 4,
+      name: 'saxophone',
+      image:
+        'https://res.cloudinary.com/drpnhajh9/image/upload/v1772670293/saxophone_cx0ovl.png',
+      ref: saxoPhoneRef
+    }
   ]
 
   useEffect(() => {
@@ -142,9 +159,9 @@ export default function Tools({ headerRef, trumpet }) {
         scrollTrigger: {
           trigger: first.current,
           start: 'top+=40% top',
-          end: '+=30%',
-          toggleActions: 'play none play reverse'
-          // markers: true
+          end: windowSize <= 500 ? '+=50%' : '+=30%',
+          toggleActions: 'play none play reverse',
+          markers: true
         },
         width: 0,
         height: 0
@@ -163,7 +180,7 @@ export default function Tools({ headerRef, trumpet }) {
         type: 'words,lines,chars'
       })
 
-      function floatingText() {
+      function floatingText () {
         const tl = gsap.timeline()
 
         tl.to(deviceTextSplit.words, {
@@ -259,17 +276,17 @@ export default function Tools({ headerRef, trumpet }) {
     boxes.map((item, i) => {
       item.id === active
         ? gsap.to(item.ref.current, {
-          zIndex: 40,
-          right: windowSize <= 500 ? -40 : 0,
-          scale: windowSize <= 500 ? 2.5 : 1,
-          ease: 'circ',
-          overwrite: 'auto'
-        })
+            zIndex: 40,
+            right: windowSize <= 500 ? -40 : 0,
+            scale: windowSize <= 500 ? 2.5 : 1,
+            ease: 'circ',
+            overwrite: 'auto'
+          })
         : gsap.to(item.ref.current, {
-          zIndex: 10,
-          right: -800,
-          overwrite: 'auto'
-        })
+            zIndex: 10,
+            right: -800,
+            overwrite: 'auto'
+          })
     })
   }, [active])
 
@@ -409,13 +426,13 @@ export default function Tools({ headerRef, trumpet }) {
           <div
             key={item.id}
             ref={item.ref}
-            className='h-full -right-200  w-[50%] absolute text-white flex   font-extrabold text-7xl border-white border-0   '
+            className='h-full -right-200   w-[50%] absolute text-white flex   font-extrabold text-7xl border-white border-0   '
           >
             {item.id === 1 ? (
               <div></div>
             ) : (
               <img
-                className='sm:w-full bg-black  h-full w-50 object-contain translate-y-0 sm:h-full  sm:object-contain sm:-translate-y-30'
+                className='sm:w-full  bg-black  h-full w-50 object-contain translate-y-0 sm:h-full  sm:object-contain sm:-translate-y-30'
                 src={item.image}
               />
             )}
@@ -424,7 +441,9 @@ export default function Tools({ headerRef, trumpet }) {
 
         <img
           ref={trumpet}
-          src={'https://res.cloudinary.com/drpnhajh9/image/upload/v1772670292/trumpo_nqldfa.png'}
+          src={
+            'https://res.cloudinary.com/drpnhajh9/image/upload/v1772670292/trumpo_nqldfa.png'
+          }
           className='absolute z-20 overflow-visible  top-80 -rotate-35 sm:rotate-0  xl:top-0 xl:w-auto md:top-20 md:left-30 md:w-[80%] md:h-150 xl:h-max xl:left-0 '
           alt='trumpet'
         />

@@ -141,11 +141,11 @@ export default function Hero () {
   return (
     <section className='min-h-110 bg-none   flex text-white relative overflow-x-hidden items-center flex-col'>
       <section className='h-full w-full max-sm:pr-5  md:w-130 xl:w-150 '>
-        <h2 className='text-lg pl-10 md:text-xl xl:text-3xl md:pl-20 xl:p-0 text-[#b09958]'>
+        <h2 className='text-lg max-sm:mt-10 pl-10 md:text-xl xl:text-3xl md:pl-20 xl:p-0 text-[#b09958]'>
           The
         </h2>
 
-        <h3 className='font-elegant text-[5em] md:text-[7em] pl-8  md:pl-20 xl:p-0 xl:text-[11em] font-medium   leading-40'>
+        <h3 className='font-elegant text-[5em] md:text-[7em]  max-sm:leading-30 pl-8  md:pl-20 xl:p-0 xl:text-[11em] font-medium   leading-40'>
           Tools
         </h3>
 
