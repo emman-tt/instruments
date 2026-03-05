@@ -1,11 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import trumpo from '../../assets/img/trumpo.png'
-import {
-  ScrollTrigger,
-  SplitText,
-  gsap,
-  ScrollToPlugin
-} from '../../utils/gsap'
+import { SplitText, gsap } from '../../utils/gsap'
 import { useGSAP } from '@gsap/react'
 import drum from '../../assets/img/drum.png'
 import piano from '../../assets/img/piano.png'
@@ -136,7 +131,7 @@ export default function Tools ({ headerRef, trumpet }) {
       gsap.from(toolsBox.current, {
         scrollTrigger: {
           trigger: first.current,
-          start: windowSize <= 500 ? 'top+=10%' : 'top+=30% top',
+          start: windowSize <= 500 ? 'top+=30%' : 'top+=30% top',
           end: '+=30%',
           toggleActions: 'play none play reverse'
           // markers: true
@@ -269,7 +264,7 @@ export default function Tools ({ headerRef, trumpet }) {
         ? gsap.to(item.ref.current, {
             zIndex: 40,
             right: windowSize <= 500 ? -40 : 0,
-            scale: windowSize <= 500 ? 2 : 1,
+            scale: windowSize <= 500 ? 2.5 : 1,
             ease: 'circ',
             overwrite: 'auto'
           })
@@ -315,7 +310,6 @@ export default function Tools ({ headerRef, trumpet }) {
           ref={first}
           className='text-white max-sm:pl-5  h-screen w-[70%] pt-30 pr-30  '
         >
-          {/* max-sm:flex max-sm:items-end max-sm:flex-col h-[80vh]  bg-green-400 sm: */}
           <h2 className=' text-[4em] md:text-[5em] xl:text-[7em] font-elegant text-left sm:pl-25 leading-tight'>
             Choose
           </h2>

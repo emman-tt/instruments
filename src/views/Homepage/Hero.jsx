@@ -13,26 +13,54 @@ import virginia from '../../assets/songs/virginia.mp3'
 export default function Hero () {
   const middleCord = useRef(null)
   const [play, setPlay] = useState(false)
-  const [current, setCurrent] = useState(0)
+  const [current, setCurrent] = useState(1)
   const audioRef = useRef(null)
   const musicArray = [
-    tooDeep,
-    ghost,
-    marvins,
-    virginia,
-    gimme,
-    clouded,
-    homecoming
+    {
+      id: 1,
+      title: 'Too Deep For The Intro - J.cole',
+      file: tooDeep
+    },
+    {
+      id: 2,
+      title: 'Ghost Town - Kanye West/PND',
+      file: ghost
+    },
+    {
+      id: 3,
+      title: "Marvin's Room - Drake ",
+      file: marvins
+    },
+    {
+      id: 4,
+      title: 'Virginia Beach - Drake',
+      file: virginia
+    },
+    {
+      id: 5,
+      title: 'Gimme a Hug - Drake',
+      file: gimme
+    },
+    {
+      id: 6,
+      title: 'Clouded - Brent Faiyaz',
+      file: clouded
+    },
+    {
+      id: 7,
+      title: 'Homecoming - Kanye West /Coldplay',
+      file: homecoming
+    }
   ]
 
   useEffect(() => {
-    if (current >= musicArray.length) {
-      audioRef.current = new Audio(musicArray[0])
-      console.log('reached')
+    if (current >= musicArray.length ) {
+      // audioRef.current = new Audio(musicArray[0].file)
+      // console.log('reached')
       return setCurrent(0)
     }
     // Create audio once and store in ref
-    audioRef.current = new Audio(musicArray[current])
+    audioRef.current = new Audio(musicArray[current].file)
     audioRef.current.loop = true // Set if you want looping
 
     // Cleanup on unmount
@@ -111,7 +139,7 @@ export default function Hero () {
     })
   }, [])
   return (
-    <section className='h-110 bg-none   flex text-white relative overflow-x-hidden items-center flex-col'>
+    <section className='min-h-110 bg-none   flex text-white relative overflow-x-hidden items-center flex-col'>
       <section className='h-full w-full max-sm:pr-5  md:w-130 xl:w-150 '>
         <h2 className='text-lg pl-10 md:text-xl xl:text-3xl md:pl-20 xl:p-0 text-[#b09958]'>
           The
@@ -166,6 +194,9 @@ export default function Hero () {
                 </li>
               </ul>
             </div>
+          </div>
+          <div className='absolute -bottom-7 text-[#b09958] left-9'>
+            {!audioRef ? 'Tap the play button' : musicArray[current]?.title}
           </div>
           <ul className='flex text-xs xl:text-sm self-center absolute right-0 top-0 items-end  font-semibold h-full  flex-col'>
             <li className='info '>Learn</li>
