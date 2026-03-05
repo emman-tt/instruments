@@ -162,7 +162,7 @@ export default function Tools ({ headerRef, trumpet }) {
           start: 'top+=40% top',
           end: windowSize <= 500 ? '+=50%' : '+=30%',
           toggleActions: 'play none play reverse',
-          markers: true
+          // markers: true
         },
         width: 0,
         height: 0
