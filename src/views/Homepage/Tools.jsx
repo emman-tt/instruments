@@ -1,10 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import trumpo from '../../assets/img/trumpo.png'
 import { SplitText, gsap } from '../../utils/gsap'
 import { useGSAP } from '@gsap/react'
-import drum from '../../assets/img/drum.png'
-import piano from '../../assets/img/piano.png'
-import saxophone from '../../assets/img/saxophone.png'
+
 
 const deviceArray = [
   {
@@ -37,7 +34,7 @@ const deviceArray = [
   }
 ]
 
-export default function Tools ({ headerRef, trumpet }) {
+export default function Tools({ headerRef, trumpet }) {
   const container = useRef(null)
   const leftSide = useRef(null)
   const rightSide = useRef(null)
@@ -57,9 +54,9 @@ export default function Tools ({ headerRef, trumpet }) {
 
   const boxes = [
     { id: 1, name: 'trumpet', ref: trumpetRef },
-    { id: 2, name: 'piano', image: piano, ref: pianoRef },
-    { id: 3, name: 'drum', image: drum, ref: drumRef },
-    { id: 4, name: 'saxophone', image: saxophone, ref: saxoPhoneRef }
+    { id: 2, name: 'piano', image: 'https://res.cloudinary.com/drpnhajh9/image/upload/v1772670290/piano_h3wp8x.png', ref: pianoRef },
+    { id: 3, name: 'drum', image: 'https://res.cloudinary.com/drpnhajh9/image/upload/v1772670293/drum_lwhzrh.png', ref: drumRef },
+    { id: 4, name: 'saxophone', image: 'https://res.cloudinary.com/drpnhajh9/image/upload/v1772670293/saxophone_cx0ovl.png', ref: saxoPhoneRef }
   ]
 
   useEffect(() => {
@@ -166,7 +163,7 @@ export default function Tools ({ headerRef, trumpet }) {
         type: 'words,lines,chars'
       })
 
-      function floatingText () {
+      function floatingText() {
         const tl = gsap.timeline()
 
         tl.to(deviceTextSplit.words, {
@@ -262,17 +259,17 @@ export default function Tools ({ headerRef, trumpet }) {
     boxes.map((item, i) => {
       item.id === active
         ? gsap.to(item.ref.current, {
-            zIndex: 40,
-            right: windowSize <= 500 ? -40 : 0,
-            scale: windowSize <= 500 ? 2.5 : 1,
-            ease: 'circ',
-            overwrite: 'auto'
-          })
+          zIndex: 40,
+          right: windowSize <= 500 ? -40 : 0,
+          scale: windowSize <= 500 ? 2.5 : 1,
+          ease: 'circ',
+          overwrite: 'auto'
+        })
         : gsap.to(item.ref.current, {
-            zIndex: 10,
-            right: -800,
-            overwrite: 'auto'
-          })
+          zIndex: 10,
+          right: -800,
+          overwrite: 'auto'
+        })
     })
   }, [active])
 
@@ -427,7 +424,7 @@ export default function Tools ({ headerRef, trumpet }) {
 
         <img
           ref={trumpet}
-          src={trumpo}
+          src={'https://res.cloudinary.com/drpnhajh9/image/upload/v1772670292/trumpo_nqldfa.png'}
           className='absolute z-20 overflow-visible  top-80 -rotate-35 sm:rotate-0  xl:top-0 xl:w-auto md:top-20 md:left-30 md:w-[80%] md:h-150 xl:h-max xl:left-0 '
           alt='trumpet'
         />

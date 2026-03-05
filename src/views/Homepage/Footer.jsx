@@ -1,15 +1,10 @@
 import { useGSAP } from '@gsap/react'
 import { gsap, ScrollTrigger } from '../../utils/gsap'
 import { useRef } from 'react'
-import drum from '../../assets/img/drum.png'
-import piano from '../../assets/img/piano.png'
-import saxophone from '../../assets/img/saxophone.png'
-import trumpo from '../../assets/img/trumpo.png'
-import guitar from '../../assets/img/guitar.png'
-import shakes from '../../assets/img/shakes.png'
-import afroDrum from '../../assets/img/afroDrum.png'
 
-export default function Footer ({ trumpet }) {
+
+
+export default function Footer({ trumpet }) {
   const container = useRef(null)
   const instrumento = useRef(null)
   const windowSize = window.innerWidth
@@ -70,34 +65,34 @@ export default function Footer ({ trumpet }) {
 
       <section className='flex '>
         <img
-          src={afroDrum}
+          src={'https://res.cloudinary.com/drpnhajh9/image/upload/v1772670289/afroDrum_oa6djf.png'}
           className='w-auto device bottom-0 left-[0%] h-50    absolute z-20 md:h-70 xl:h-100 object-cover'
         />
         <img
-          src={shakes}
+          src={'https://res.cloudinary.com/drpnhajh9/image/upload/v1772670291/shakes_zflwpx.png'}
           className='w-auto bottom-0 max-sm:-right-10 device  rotate-10 h-50 absolute z-10 right-[20%]  md:h-70 xl:h-100 object-cover'
         />
         <img
-          src={guitar}
+          src={'https://res.cloudinary.com/drpnhajh9/image/upload/v1772670290/guitar_y7oaka.png'}
           className='w-auto bottom-0  device  rotate-40 h-50 absolute z-10 left-0 md:h-70 xl:h-100 object-cover'
         />
         <img
-          src={trumpo}
+          src={'https://res.cloudinary.com/drpnhajh9/image/upload/v1772670292/trumpo_nqldfa.png'}
           className='w-auto bottom-0 device  rotate-40 h-50 absolute z-10 left-0 md:h-70 xl:h-100 object-cover'
         />
 
         <img
-          src={drum}
+          src={'https://res.cloudinary.com/drpnhajh9/image/upload/v1772670293/drum_lwhzrh.png'}
           className='w-auto absolute device max-sm:right-[5%] bottom-0 h-50 z-8 right-[36%] md:h-70 xl:h-100 object-cover'
         />
 
         <img
-          src={saxophone}
+          src={'https://res.cloudinary.com/drpnhajh9/image/upload/v1772670293/saxophone_cx0ovl.png'}
           className='w-auto absolute max-sm:hidden device right-[20%] h-50 rotate-0 bottom-0 z-9 md:h-150 object-cover'
         />
 
         <img
-          src={piano}
+          src={'https://res.cloudinary.com/drpnhajh9/image/upload/v1772670290/piano_h3wp8x.png'}
           className='w-auto bottom-0 max-sm:hidden device z-10 absolute right-0 h-50 md:h-70 xl:h-100 object-cover'
         />
       </section>
